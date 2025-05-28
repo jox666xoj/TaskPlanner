@@ -1,0 +1,190 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskPlan</title>
+  <style>
+    :root {
+      --bg: #f9f9f9;
+      --white: #fff;
+      --text: #111;
+      --light-border: #e0e0e0;
+      --shadow: 0 4px 10px rgba(0,0,0,0.05);
+      --radius: 16px;
+    }
+
+    body {
+      margin: 0;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    h2 {
+      font-weight: 700;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .widget-bar {
+      display: flex;
+      gap: 8px;
+    }
+
+    .widget {
+      background: var(--white);
+      padding: 8px 12px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      font-size: 14px;
+      border: 1px solid var(--light-border);
+    }
+
+    .tags {
+      margin: 12px 0;
+      overflow-x: auto;
+      display: flex;
+      gap: 10px;
+      padding-bottom: 8px;
+    }
+
+    .tag {
+      flex-shrink: 0;
+      background: var(--white);
+      padding: 6px 14px;
+      border-radius: 18px;
+      font-size: 13px;
+      border: 1px solid var(--light-border);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+      white-space: nowrap;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--light-border);
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-around;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--white);
+      padding: 10px 0;
+      border-top: 1px solid var(--light-border);
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.03);
+    }
+
+    .tab {
+      font-size: 14px;
+      color: #555;
+      cursor: pointer;
+    }
+
+    .tab.active {
+      color: black;
+      font-weight: bold;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .search {
+      margin: 20px 0;
+    }
+
+    .search input {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--light-border);
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h2>TaskPlan<span style="color:red;">.</span></h2>
+    <div class="widget-bar">
+      <div class="widget">📅 5</div>
+      <div class="widget">🔔 3</div>
+      <div class="widget">☀️ 31°</div>
+    </div>
+  </div>
+
+  <div class="tags">
+    <div class="tag">🏃 Workout</div>
+    <div class="tag">🍽 Restaurants</div>
+    <div class="tag">🛒 Products</div>
+    <div class="tag">✈️ Trips</div>
+    <div class="tag">📺 Shows</div>
+  </div>
+
+  <div class="search">
+    <input type="text" placeholder="Search something...">
+  </div>
+
+  <div id="tab-home" class="section active">
+    <div class="card">
+      <strong>Import 3 posts</strong><br>
+      Tap to hide<br><br>
+      <em>Tip:</em> Make sure TaskPlan is pinned to your share sheet.
+    </div>
+
+    <div class="card">
+      <strong>Films & shows</strong><br>
+      You can manage your watchlist here.
+    </div>
+  </div>
+
+  <div id="tab-map" class="section">
+    <div class="card">
+      <strong>Map content</strong><br>
+      Coming soon...
+    </div>
+  </div>
+
+  <div id="tab-profile" class="section">
+    <div class="card">
+      <strong>Profile</strong><br>
+      Your settings and info go here.
+    </div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('home', this)">🔖</div>
+    <div class="tab" onclick="switchTab('map', this)">🗺️</div>
+    <div class="tab" onclick="switchTab('profile', this)">👤</div>
+  </div>
+
+  <script>
+    function switchTab(tabName, el) {
+      // Sections
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById('tab-' + tabName).classList.add('active');
+      // Tabs
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      el.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
