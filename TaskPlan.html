@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="TaskPlan" />
-  <link rel="apple-touch-icon" href="icon.png" />
   <title>TaskPlan</title>
   <style>
     :root {
@@ -16,6 +15,10 @@
       --light-border: #e0e0e0;
       --shadow: 0 4px 10px rgba(0,0,0,0.05);
       --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
@@ -34,6 +37,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-bottom: 12px;
     }
 
     .widget-bar {
